@@ -69,16 +69,18 @@ export default function AnimeDetailsUpper({ anime }) {
         </div>
 
         <div className="flex flex-col gap-8">
-          <div className="flex items-center gap-8 text-sm">
-            <h5>Studios</h5>
-            <div className="flex items-center gap-6">
-              {studios.map((studio) => (
-                <Link href={`/studio/${studio.mal_id}`} key={studio.mal_id}>
-                  <a className="text-gray-300">{studio.name}</a>
-                </Link>
-              ))}
+          {studios.length > 0 && (
+            <div className="flex items-center gap-8 text-sm">
+              <h5>Studios</h5>
+              <div className="flex items-center gap-6">
+                {studios.map((studio) => (
+                  <Link href={`/studio/${studio.mal_id}`} key={studio.mal_id}>
+                    <a className="text-gray-300">{studio.name}</a>
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           <div className="flex items-center gap-5 text-sm">
             <span>Original Run</span>

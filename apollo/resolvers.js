@@ -66,8 +66,20 @@ export const resolvers = {
   Mutation: {
     addAnime: async (_, { animeInput }) => {
       try {
+        const anime = await Anime.findOne({ mal_id: animeInput.mal_id });
+        if (anime) {
+          return null;
+        }
         const savedAnime = new Anime(animeInput);
         return savedAnime.save();
+      } catch (err) {
+        console.log(err.message);
+      }
+    },
+    removeAnime: async (_, { id }) => {
+      try {
+        const anime = await Anime.findOne({ mal_id: id });
+        return await anime.delete();
       } catch (err) {
         console.log(err.message);
       }

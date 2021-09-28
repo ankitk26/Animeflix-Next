@@ -93,5 +93,6 @@ export const typeDefs = gql`
 
   type Mutation {
     addAnime(animeInput: WatchListInput): WatchListAnime
+    removeAnime(id: ID!): WatchListAnime
   }
 `;

@@ -28,6 +28,9 @@ export default function WatchlistBtn({ btnProps }) {
       setIsOpen(true);
       setIsInWatchlist(true);
       addAnime();
+    } else {
+      setIsOpen(true);
+      setIsInWatchlist(false);
     }
   };
 
@@ -44,7 +47,11 @@ export default function WatchlistBtn({ btnProps }) {
         open={isOpen}
         autoHideDuration={3000}
         onClose={() => setIsOpen(false)}
-        message="Anime added to watchlist"
+        message={
+          isInWatchlist
+            ? "Anime removed from watchlist"
+            : "Anime added to watchlist"
+        }
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
         key="bottom center"
         action={
