@@ -11,6 +11,7 @@ export const typeDefs = gql`
     studio(id: ID!): Studio
     getCurrentSeason: Season
     getPopular: [AnimeItem]
+    getWatchList: [WatchListAnime]
   }
 
   type AnimeItem {
@@ -38,6 +39,7 @@ export const typeDefs = gql`
     characters: [Character]
     pictures: [String]
     recommendations: [AnimeItem]
+    inWatchlist: Boolean
   }
 
   type Genre {
@@ -65,5 +67,31 @@ export const typeDefs = gql`
     mal_id: ID
     image_url: String
     name: String
+  }
+
+  scalar Date
+
+  type WatchListAnime {
+    _id: ID
+    mal_id: ID
+    title: String
+    title_english: String
+    image_url: String
+    score: Float
+    watched: Boolean
+    createdAt: Date
+    updatedAt: Date
+  }
+
+  input WatchListInput {
+    mal_id: ID!
+    title: String!
+    title_english: String
+    image_url: String
+    score: Float
+  }
+
+  type Mutation {
+    addAnime(animeInput: WatchListInput): WatchListAnime
   }
 `;

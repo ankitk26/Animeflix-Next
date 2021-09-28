@@ -1,6 +1,6 @@
-import AnimeGridQuery from "../components/AnimeGridQuery";
-import Layout from "../components/Layout";
-import { TopAnimeQuery } from "../lib/queries";
+import AnimeGridQuery from "@/components/AnimeGridQuery";
+import Layout from "@/components/Layout";
+import { TopAnimeQuery } from "@/lib/queries";
 
 export default function TopRatedAnime() {
   const title = "Top rated Anime";

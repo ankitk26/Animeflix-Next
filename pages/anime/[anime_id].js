@@ -1,19 +1,22 @@
+import AnimeDetailsLower from "@/components/AnimeDetailsLower";
+import AnimeDetailsUpper from "@/components/AnimeDetailsUpper";
+import Layout from "@/components/Layout";
+import Spinner from "@/components/Spinner";
+import { SingleAnimeQuery } from "@/lib/queries";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { SingleAnimeQuery } from "../../lib/queries";
-import Layout from "../../components/Layout";
-import AnimeDetailsUpper from "../../components/AnimeDetailsUpper";
-import AnimeDetailsLower from "../../components/AnimeDetailsLower";
 
 export default function AnimeDetails() {
   const router = useRouter();
   const id = router.query.anime_id;
 
-  const { data, loading, error } = useQuery(SingleAnimeQuery, {
+  const { data, loading } = useQuery(SingleAnimeQuery, {
     variables: {
       id,
     },
   });
+
+  if (loading && !data) return <Spinner />;
 
   return (
     <Layout

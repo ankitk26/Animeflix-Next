@@ -1,6 +1,6 @@
-import AnimeGridQuery from "../components/AnimeGridQuery";
-import Layout from "../components/Layout";
-import { TopAiringAnimeQuery } from "../lib/queries";
+import AnimeGridQuery from "@/components/AnimeGridQuery";
+import Layout from "@/components/Layout";
+import { TopAiringAnimeQuery } from "@/lib/queries";
 
 export default function TopAiringAnime() {
   const title = "Top Airing Anime";

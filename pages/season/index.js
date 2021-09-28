@@ -1,6 +1,6 @@
-import AnimeGridQuery from "../../components/AnimeGridQuery";
-import Layout from "../../components/Layout";
-import { CurrentSeasonQuery } from "../../lib/queries";
+import AnimeGridQuery from "@/components/AnimeGridQuery";
+import Layout from "@/components/Layout";
+import { CurrentSeasonQuery } from "@/lib/queries";
 
 export default function CurrentSeasonAnimePage() {
   const title = "Current season anime";

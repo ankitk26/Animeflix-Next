@@ -1,3 +1,4 @@
+import Anime from "../models/Anime";
 import {
   fetchAiring,
   fetchAnime,
@@ -24,6 +25,14 @@ export const resolvers = {
     genre: (_, { id, page }) => fetchGenre(id, page),
     getCurrentSeason: () => fetchCurrentSeason(),
     getPopular: () => fetchPopularAnime(),
+    getWatchList: async () => {
+      try {
+        const items = await Anime.find();
+        return items;
+      } catch (err) {
+        console.log(err.message);
+      }
+    },
   },
 
   AnimeInfo: {
@@ -35,6 +44,15 @@ export const resolvers = {
     },
     recommendations: ({ mal_id }) => fetchRecommendations(mal_id),
     airing_period: ({ aired }) => aired?.string,
+    inWatchlist: async ({ mal_id }) => {
+      try {
+        const anime = await Anime.findOne({ mal_id });
+        if (anime) return true;
+        else return false;
+      } catch (err) {
+        console.log(err.message);
+      }
+    },
   },
 
   Genres: {
@@ -43,5 +61,16 @@ export const resolvers = {
 
   Studio: {
     studio_name: (parent) => parent.meta.name,
+  },
+
+  Mutation: {
+    addAnime: async (_, { animeInput }) => {
+      try {
+        const savedAnime = new Anime(animeInput);
+        return savedAnime.save();
+      } catch (err) {
+        console.log(err.message);
+      }
+    },
   },
 };

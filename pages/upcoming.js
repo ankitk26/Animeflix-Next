@@ -1,6 +1,6 @@
-import AnimeGridQuery from "../components/AnimeGridQuery";
-import Layout from "../components/Layout";
-import { UpcomingAnimeQuery } from "../lib/queries";
+import AnimeGridQuery from "@/components/AnimeGridQuery";
+import Layout from "@/components/Layout";
+import { UpcomingAnimeQuery } from "@/lib/queries";
 
 export default function UpcomingAnimePage() {
   const title = "Upcoming anime";

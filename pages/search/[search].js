@@ -1,8 +1,8 @@
+import AnimeItems from "@/components/AnimeItems";
+import Layout from "@/components/Layout";
+import { SearchQuery } from "@/lib/queries";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/dist/client/router";
-import AnimeItems from "../../components/AnimeItems";
-import Layout from "../../components/Layout";
-import { SearchQuery } from "../../lib/queries";
 
 export default function SearchResults() {
   const router = useRouter();

@@ -6,12 +6,12 @@ export default function Gallery({ pictures }) {
         {pictures.map((picture, index) => (
           <div
             key={index}
-            className="flex flex-col items-center justify-center col-span-1"
+            className="flex flex-col items-start justify-center col-span-1"
           >
             <img
               src={picture}
               alt={`pic_${picture}_${index}`}
-              className="object-contain w-full mx-auto my-0 rounded-lg"
+              className="object-contain w-full mx-auto"
             />
           </div>
         ))}

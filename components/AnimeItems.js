@@ -1,5 +1,4 @@
 import AnimeItem from "./AnimeItem";
-import Link from "next/link";
 
 export default function AnimeItems({ animeList }) {
   return (

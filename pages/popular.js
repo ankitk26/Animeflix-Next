@@ -1,6 +1,6 @@
-import AnimeGridQuery from "../components/AnimeGridQuery";
-import Layout from "../components/Layout";
-import { PopularAnimeQuery } from "../lib/queries";
+import AnimeGridQuery from "@/components/AnimeGridQuery";
+import Layout from "@/components/Layout";
+import { PopularAnimeQuery } from "@/lib/queries";
 
 export default function PopularAnimePage() {
   const title = "Popular Anime on Animeflix";

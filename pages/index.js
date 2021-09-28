@@ -1,11 +1,11 @@
-import AnimeGridQuery from "../components/AnimeGridQuery";
-import Layout from "../components/Layout";
+import AnimeGridQuery from "@/components/AnimeGridQuery";
+import Layout from "@/components/Layout";
 import {
   CurrentSeasonQuery,
   PopularAnimeQuery,
   TopAiringAnimeQuery,
   TopAnimeQuery,
-} from "../lib/queries";
+} from "@/lib/queries";
 
 export default function Home() {
   return (

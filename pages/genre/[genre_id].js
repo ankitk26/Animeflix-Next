@@ -1,9 +1,9 @@
+import AnimeItems from "@/components/AnimeItems";
+import Layout from "@/components/Layout";
+import { GenreAnimeQuery } from "@/lib/queries";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import AnimeItems from "../../components/AnimeItems";
-import Layout from "../../components/Layout";
-import { GenreAnimeQuery } from "../../lib/queries";
 
 export default function GenreAnime() {
   const router = useRouter();

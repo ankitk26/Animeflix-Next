@@ -1,8 +1,8 @@
+import AnimeItems from "@/components/AnimeItems";
+import Layout from "@/components/Layout";
+import { StudioQuery } from "@/lib/queries";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import AnimeItems from "../../components/AnimeItems";
-import Layout from "../../components/Layout";
-import { StudioQuery } from "../../lib/queries";
 
 export default function StudioAnime() {
   const router = useRouter();

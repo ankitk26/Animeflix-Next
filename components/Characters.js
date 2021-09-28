@@ -2,7 +2,7 @@ export default function Characters({ characters }) {
   return (
     <div className="mb-12">
       <h1>Characters</h1>
-      <div className="grid justify-center max-w-full grid-cols-8 gap-6 mt-4">
+      <div className="grid max-w-full grid-cols-8 gap-6 px-0 mt-4">
         {characters.map((character) => (
           <div
             key={character.mal_id}

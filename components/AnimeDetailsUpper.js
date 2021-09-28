@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { MdGrade, MdMovie } from "react-icons/md";
 import { FaYoutube } from "react-icons/fa";
+import { MdGrade, MdMovie } from "react-icons/md";
+import WatchlistBtn from "./WatchlistBtn";
 
 export default function AnimeDetailsUpper({ anime }) {
   const {
@@ -11,13 +12,13 @@ export default function AnimeDetailsUpper({ anime }) {
     title_english,
     score,
     premiered,
-    genres,
     studios,
     type,
     rating,
     duration,
     trailer_url,
     airing_period,
+    inWatchlist,
   } = anime;
 
   return (
@@ -28,16 +29,6 @@ export default function AnimeDetailsUpper({ anime }) {
           alt={title}
           className="object-contain w-full rounded-lg"
         />
-        {trailer_url && (
-          <div className="mt-3">
-            <a target="_blank" href={trailer_url} rel="noreferrer">
-              <button className="flex items-center gap-3 px-4 py-2 text-sm bg-gray-800 rounded-md">
-                <FaYoutube />
-                <span>Watch trailer</span>
-              </button>
-            </a>
-          </div>
-        )}
       </div>
 
       <div className="col-span-9">
@@ -60,18 +51,6 @@ export default function AnimeDetailsUpper({ anime }) {
           {rating && rating !== "None" && (
             <span className="text-sm text-gray-400">{rating}</span>
           )}
-        </div>
-
-        <div className="flex flex-wrap items-center gap-4 my-4">
-          {genres.map((genre) => (
-            <Link key={genre.mal_id} href={`/genre/${genre.mal_id}`}>
-              <a className="flex px-3 py-1 bg-gray-600 border border-gray-600 rounded-full">
-                <span className="text-sm leading-none text-gray-100">
-                  {genre.name}
-                </span>
-              </a>
-            </Link>
-          ))}
         </div>
 
         <div className="flex items-center gap-16 my-8">
@@ -105,6 +84,30 @@ export default function AnimeDetailsUpper({ anime }) {
             <span>Original Run</span>
             <span>{airing_period}</span>
           </div>
+        </div>
+
+        <div className="flex items-center gap-5 mt-5">
+          {trailer_url && (
+            <div className="flex items-center">
+              <a target="_blank" href={trailer_url} rel="noreferrer">
+                <button className="flex items-center gap-3 px-4 py-2 text-sm bg-gray-800 rounded-md">
+                  <FaYoutube />
+                  <span>Watch trailer</span>
+                </button>
+              </a>
+            </div>
+          )}
+
+          <WatchlistBtn
+            btnProps={{
+              mal_id,
+              title,
+              title_english,
+              image_url,
+              score,
+              inWatchlist,
+            }}
+          />
         </div>
       </div>
     </div>
