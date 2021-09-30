@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { BiBookOpen } from "react-icons/bi";
 import { FaYoutube } from "react-icons/fa";
-import { MdGrade, MdMovie } from "react-icons/md";
+import { MdCheck, MdGrade, MdMovie } from "react-icons/md";
 import WatchlistBtn from "./WatchlistBtn";
 
 export default function AnimeDetailsUpper({ anime }) {
@@ -16,6 +17,8 @@ export default function AnimeDetailsUpper({ anime }) {
     type,
     rating,
     duration,
+    status,
+    source,
     trailer_url,
     airing_period,
     inWatchlist,
@@ -57,14 +60,26 @@ export default function AnimeDetailsUpper({ anime }) {
           <div className="flex flex-col items-center gap-4">
             <MdMovie className="text-2xl" />
             <h5>Episodes</h5>
-            <span className="text-xs">
+            <span className="text-sm text-gray-300">
               {episodes !== null ? episodes : "N/A"}
             </span>
           </div>
           <div className="flex flex-col items-center gap-4">
             <MdGrade className="text-2xl" />
             <h5>Score</h5>
-            <span className="text-xs">{score !== null ? score : "N/A"}</span>
+            <span className="text-sm text-gray-300">
+              {score !== null ? score : "N/A"}
+            </span>
+          </div>
+          <div className="flex flex-col items-center gap-4">
+            <MdCheck className="text-2xl" />
+            <h5>Status</h5>
+            <span className="text-sm text-gray-300">{status}</span>
+          </div>
+          <div className="flex flex-col items-center gap-4">
+            <BiBookOpen className="text-2xl" />
+            <h5>Source</h5>
+            <span className="text-sm text-gray-300">{source}</span>
           </div>
         </div>
 

@@ -32,11 +32,11 @@ export default function AnimeGridQuery({
   return (
     <>
       {list && (
-        <div className="mb-10">
+        <div className="mb-16">
           <div className="flex items-center justify-between">
-            <h1 className="font-medium text-gray-100">
+            <h2 className="font-medium text-gray-100">
               {seasonTitle === "" ? title : seasonTitle}
-            </h1>
+            </h2>
             {forHome && (
               <Link href={link}>
                 <a>
@@ -45,7 +45,7 @@ export default function AnimeGridQuery({
               </Link>
             )}
           </div>
-          <AnimeItems animeList={forHome ? list?.slice(0, 10) : list} />
+          <AnimeItems animeList={forHome ? list?.slice(0, 5) : list} />
         </div>
       )}
     </>

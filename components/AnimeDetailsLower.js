@@ -19,9 +19,7 @@ export default function AnimeDetailsLower({ anime }) {
 
       <div className="mb-12">
         <div className="mt-2">
-          <p className="text-sm leading-5 tracking-wide text-gray-300">
-            {synopsis}
-          </p>
+          <p className="text-[15px] tracking-wide text-gray-300">{synopsis}</p>
         </div>
       </div>
 

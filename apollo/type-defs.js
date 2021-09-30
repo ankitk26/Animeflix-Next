@@ -6,9 +6,9 @@ export const typeDefs = gql`
     anime(id: ID!): AnimeInfo
     searchAnime(query: String): [AnimeItem]
     genre(id: ID!, page: Int): Genres
+    studio(id: ID!): Studio
     getUpcoming: [AnimeItem]
     getAiring: [AnimeItem]
-    studio(id: ID!): Studio
     getCurrentSeason: Season
     getPopular: [AnimeItem]
     getWatchList: [WatchListAnime]
@@ -33,6 +33,8 @@ export const typeDefs = gql`
     score: Float
     type: String
     rating: String
+    status: String
+    source: String
     studios: [Genre]
     airing_period: String
     genres: [Genre]
