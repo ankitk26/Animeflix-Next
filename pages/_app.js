@@ -1,4 +1,5 @@
 import { useApollo } from "@/apollo/client";
+import AnimeProvider from "@/context/AnimeContext";
 import "@/styles/globals.css";
 import { ApolloProvider } from "@apollo/client";
 
@@ -7,7 +8,9 @@ export default function MyApp({ Component, pageProps }) {
 
   return (
     <ApolloProvider client={apolloClient}>
-      <Component {...pageProps} />
+      <AnimeProvider>
+        <Component {...pageProps} />
+      </AnimeProvider>
     </ApolloProvider>
   );
 }

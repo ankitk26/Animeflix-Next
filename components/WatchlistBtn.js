@@ -1,4 +1,5 @@
-import { AddAnimeMutation } from "@/lib/mutations";
+import { useAnime } from "@/context/AnimeContext";
+import { AddAnimeMutation, RemoveAnimeMutation } from "@/lib/mutations";
 import { useMutation } from "@apollo/client";
 import Snackbar from "@mui/material/Snackbar";
 import { useState } from "react";
@@ -9,6 +10,7 @@ export default function WatchlistBtn({ btnProps }) {
     btnProps;
   const [isOpen, setIsOpen] = useState(false);
   const [isInWatchlist, setIsInWatchlist] = useState(inWatchlist);
+  const { addItem, removeItem } = useAnime();
 
   const [addAnime] = useMutation(AddAnimeMutation, {
     variables: {
@@ -23,14 +25,30 @@ export default function WatchlistBtn({ btnProps }) {
     },
   });
 
+  const [removeAnime] = useMutation(RemoveAnimeMutation, {
+    variables: {
+      id: mal_id,
+    },
+    update: (_, result) => {
+      console.log(result.data);
+      setIsOpen(true);
+    },
+    onError: (err) => {
+      console.log(err.graphQLErrors[0].message);
+    },
+  });
+
   const addToWatchlist = () => {
     if (!isInWatchlist) {
-      setIsOpen(true);
       setIsInWatchlist(true);
-      addAnime();
-    } else {
       setIsOpen(true);
+      addAnime();
+      addItem(btnProps);
+    } else {
       setIsInWatchlist(false);
+      setIsOpen(true);
+      removeAnime();
+      removeItem(mal_id);
     }
   };
 
@@ -49,8 +67,8 @@ export default function WatchlistBtn({ btnProps }) {
         onClose={() => setIsOpen(false)}
         message={
           isInWatchlist
-            ? "Anime removed from watchlist"
-            : "Anime added to watchlist"
+            ? "Anime added to watchlist"
+            : "Anime removed from watchlist"
         }
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
         key="bottom center"

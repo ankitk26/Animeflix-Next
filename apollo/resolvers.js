@@ -27,7 +27,7 @@ export const resolvers = {
     getPopular: () => fetchPopularAnime(),
     getWatchList: async () => {
       try {
-        const items = await Anime.find();
+        const items = await Anime.find().sort("-createdAt");
         return items;
       } catch (err) {
         console.log(err.message);

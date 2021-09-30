@@ -4,9 +4,11 @@ import { Snackbar } from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";
 import { MdClose } from "react-icons/md";
+import { useAnime } from "@/context/AnimeContext";
 
 export default function WatchlistAnimeItem({ anime }) {
   const [isOpen, setIsOpen] = useState(false);
+  const { removeItem } = useAnime();
 
   const [removeAnime] = useMutation(RemoveAnimeMutation, {
     variables: {
@@ -24,6 +26,9 @@ export default function WatchlistAnimeItem({ anime }) {
   const handleRemove = () => {
     setIsOpen(true);
     removeAnime();
+    setTimeout(function () {
+      removeItem(anime.mal_id);
+    }, 2000);
   };
 
   return (

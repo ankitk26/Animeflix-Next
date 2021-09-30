@@ -23,7 +23,7 @@ export default function AnimeDetails() {
       title={loading && !data ? "Loading..." : data.anime.title}
       desc="View details of the anime"
     >
-      {data && (
+      {data !== undefined && data !== null && (
         <>
           <AnimeDetailsUpper anime={data.anime} />
           <AnimeDetailsLower anime={data.anime} />
